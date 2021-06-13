@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 namespace AlterPott
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class FacebookCrawlerController : ControllerBase
     {
         private readonly ILogger<FacebookCrawlerController> _logger;
@@ -12,6 +12,12 @@ namespace AlterPott
         public FacebookCrawlerController(ILogger<FacebookCrawlerController> logger)
         {
             _logger = logger;
+        }
+
+        [HttpGet]
+        public ActionResult Get()
+        {
+            return Ok("Hello World");
         }
 
         [HttpPost]
