@@ -8,16 +8,18 @@ namespace AlterPott
     public class FacebookCrawlerController : ControllerBase
     {
         private readonly ILogger<FacebookCrawlerController> _logger;
+        private readonly ICrawler _crawler;
 
-        public FacebookCrawlerController(ILogger<FacebookCrawlerController> logger)
+        public FacebookCrawlerController(ILogger<FacebookCrawlerController> logger, ICrawler crawler)
         {
             _logger = logger;
+            _crawler = crawler;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok("Hello World");
+            return Ok(_crawler.Crawl("..."));
         }
 
         [HttpPost]
